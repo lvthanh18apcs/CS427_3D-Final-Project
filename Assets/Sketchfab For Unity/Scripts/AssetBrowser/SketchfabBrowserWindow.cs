@@ -621,8 +621,8 @@ namespace Sketchfab
 			GUILayout.EndVertical();
 		}
 
-		// Model page
-		void displaySeparatedModelPage()
+        // Model page
+        void displaySeparatedModelPage()
 		{
 			if (_skfbWin == null)
 			{
