@@ -8,10 +8,8 @@ using UnityEngine;
 
 public class LookWithMouse : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-
+    public float mouseSensitivity = 0f;
     public Transform playerBody;
-
     float xRotation = 0f;
 
     // Start is called before the first frame update
@@ -45,7 +43,6 @@ public class LookWithMouse : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 #endif
-
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
