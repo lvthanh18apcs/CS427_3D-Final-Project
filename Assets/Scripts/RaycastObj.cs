@@ -31,7 +31,6 @@ public class RaycastObj : MonoBehaviour
             selectedObj = null;
             internalObject = null;
             obj = null;
-
             manager.UIText.enabled = false;
         }
     }
