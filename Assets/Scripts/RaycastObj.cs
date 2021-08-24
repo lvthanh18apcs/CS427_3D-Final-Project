@@ -22,23 +22,47 @@ public class RaycastObj : MonoBehaviour
             selectedObj = theObj.transform.gameObject.name;
             internalObject = theObj.transform.gameObject.name;
             obj = theObj.transform.gameObject;
+
+            if(validateInteration(obj.transform.tag))
+                manager.UIText.enabled = true;
         }
         else
         {
             selectedObj = null;
             internalObject = null;
             obj = null;
+
+            manager.UIText.enabled = false;
         }
+    }
+
+    bool validateInteration(string tag)
+    {
+        if (tag == "Rotate" || tag == "Value")
+            return true;
+        return false;
     }
 
     public void handleInteration()
     {
         if (obj != null)
         {
-            //rotate object
-            if (obj.transform.name == "DanceCode")
+            //Debug.Log("Interacted");
+            if (obj.transform.tag == "Rotate")
             {
-                manager.viewObject("R_test");
+                if (obj.transform.name == "DanceCode")
+                    manager.viewObject("R_test");
+            }
+            else if (obj.transform.tag == "Value")
+            {
+                UnityEngine.UI.Text text = obj.GetComponentInChildren<UnityEngine.UI.Text>();
+                //Debug.Log("interacted: " + text);
+                int ch = text.text[0];
+                ch++;
+                if (ch > 90)
+                    ch = 65;
+                text.text = "";
+                text.text += (char)ch;
             }
         }
     }
