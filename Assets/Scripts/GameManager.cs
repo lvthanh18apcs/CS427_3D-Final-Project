@@ -13,7 +13,9 @@ public class GameManager : MonoBehaviour
     Light flashLight;
     RaycastObj vision;
     Camera cam;
-    Canvas canvas;
+    public UnityEngine.UI.Image background;
+    public UnityEngine.UI.Text UIText;
+    public UnityEngine.UI.Text modelText;
     GameObject rotate_Obj;
     LayerMask mask;
 
@@ -25,8 +27,6 @@ public class GameManager : MonoBehaviour
         flashLight = (Light)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(Light));
         vision = (RaycastObj)gameObject.GetComponent(typeof(RaycastObj));
         cam = (Camera)gameObject.GetComponentInChildren(typeof(Camera));
-        canvas = (Canvas)gameObject.GetComponentInChildren(typeof(Canvas));
-        canvas.enabled = false;
         rotate_Obj = null;
         mask = cam.cullingMask;
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
 
     public void viewObject(string name)
     {
-        canvas.enabled = true;
         freeze = true;
         Cursor.visible = true;
         viewMode = true;
@@ -53,9 +52,8 @@ public class GameManager : MonoBehaviour
         {
             vision.handleInteration();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && viewMode)
+        else if (Input.GetKeyDown(KeyCode.F1) && viewMode)
         {
-            canvas.enabled = false;
             freeze = false;
             Cursor.visible = false;
             viewMode = false;

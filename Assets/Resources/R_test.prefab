@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5740667672275254691}
   - component: {fileID: 5740667672275254702}
   - component: {fileID: 5740667672275254703}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: R_test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,3 +127,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 300
+  forceMul: 2
