@@ -5,6 +5,7 @@ using UnityEngine;
 public class ModelViewer : MonoBehaviour
 {
     public float rotSpeed = 10f;
+    public float forceMul = 2;
     bool dragging = false;
     Rigidbody rb;
 
@@ -33,8 +34,8 @@ public class ModelViewer : MonoBehaviour
             float x = Input.GetAxis("Mouse X") * rotSpeed * Time.fixedDeltaTime;
             float y = Input.GetAxis("Mouse Y") * rotSpeed * Time.fixedDeltaTime;
 
-            rb.AddTorque(Vector3.down * x);
-            rb.AddTorque(Vector3.right * y);
+            rb.AddTorque(Vector3.down * x * forceMul);
+            rb.AddTorque(Vector3.right * y * forceMul);
         }
     }
 }
