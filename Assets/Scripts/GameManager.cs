@@ -11,20 +11,19 @@ enum Mode: int
 
 public class GameManager : MonoBehaviour
 {
-    public bool freeze = false;
-    bool plight = false;
-    bool hasLight = true;
+    [SerializeField] bool freeze = false;
+    public bool hasLight = true;
     int cur_mode;
 
     PlayerMovement movement;
     LookWithMouse mouseMovement;
-    Light flashLight;
+    Light lightsrc;
     RaycastObj vision;
     Camera cam;
-    public UnityEngine.UI.Image background;
-    public UnityEngine.UI.Text UIText;
-    public UnityEngine.UI.Text modelText;
-    public UnityEngine.UI.Image storyPanel;
+    [SerializeField] UnityEngine.UI.Image background;
+    [SerializeField] UnityEngine.UI.Text UIText;
+    [SerializeField] UnityEngine.UI.Text modelText;
+    [SerializeField] UnityEngine.UI.Image storyPanel;
     UnityEngine.UI.Text storyLine;
     GameObject rotate_Obj;
     LayerMask mask;
@@ -35,7 +34,7 @@ public class GameManager : MonoBehaviour
     {
         movement = (PlayerMovement)gameObject.GetComponent(typeof(PlayerMovement));
         mouseMovement = (LookWithMouse)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(LookWithMouse));
-        flashLight = (Light)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(Light));
+        lightsrc = (Light)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(Light));
         vision = (RaycastObj)gameObject.GetComponent(typeof(RaycastObj));
         cam = (Camera)gameObject.GetComponentInChildren(typeof(Camera));
         story = (StoryManager)gameObject.GetComponent(typeof(StoryManager));
@@ -46,6 +45,17 @@ public class GameManager : MonoBehaviour
         mask = cam.cullingMask;
         Cursor.lockState = CursorLockMode.Locked;
         cur_mode = (int)Mode.freeMode;
+    }
+
+    public void setUIText(bool enable, string message = "Click to interact")
+    {
+        if (enable)
+        {
+            UIText.enabled = true;
+            UIText.text = message;
+        }
+        else
+            UIText.enabled = false;
     }
 
     public void viewObject(string name)
@@ -94,12 +104,10 @@ public class GameManager : MonoBehaviour
             storyLine.enabled = true;
             story.runStory(storyLine, 0);
         }
+
         if (Input.GetKeyDown(KeyCode.F) && hasLight)
         {
-            if (plight)
-                plight = false;
-            else
-                plight = true;
+            lightsrc.enabled = !lightsrc.enabled;
         }
 
         if (freeze)
@@ -112,10 +120,5 @@ public class GameManager : MonoBehaviour
             movement.enabled = true;
             mouseMovement.enabled = true;
         }
-
-        if (plight)
-            flashLight.enabled = true;
-        else
-            flashLight.enabled = false;
     }
 }

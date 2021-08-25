@@ -5,9 +5,9 @@ using UnityEngine;
 public class RaycastObj : MonoBehaviour
 {
     public static string selectedObj;
-    public string internalObject;
-    public RaycastHit theObj;
-    public GameObject obj;
+    [SerializeField] string internalObject;
+    [SerializeField] RaycastHit theObj;
+    GameObject obj;
     GameManager manager;
 
     private void Start()
@@ -23,21 +23,21 @@ public class RaycastObj : MonoBehaviour
             internalObject = theObj.transform.gameObject.name;
             obj = theObj.transform.gameObject;
 
-            if(validateInteration(obj.transform.tag))
-                manager.UIText.enabled = true;
+            if (validateInteration(obj.transform.tag))
+                manager.setUIText(true);
         }
         else
         {
             selectedObj = null;
             internalObject = null;
             obj = null;
-            manager.UIText.enabled = false;
+            manager.setUIText(false, "");
         }
     }
 
     bool validateInteration(string tag)
     {
-        if (tag == "Rotate" || tag == "Value")
+        if (tag == "Rotate" || tag == "Value" || tag == "Pickup")
             return true;
         return false;
     }
@@ -62,6 +62,13 @@ public class RaycastObj : MonoBehaviour
                     ch = 65;
                 text.text = "";
                 text.text += (char)ch;
+            }
+            else if (obj.transform.tag == "Pickup")
+            {
+                if (obj.transform.name == "flashlight")
+                    manager.hasLight = true;
+                Destroy(obj);
+                obj = null;
             }
         }
     }
