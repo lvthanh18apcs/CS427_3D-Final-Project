@@ -37,38 +37,64 @@ public class RaycastObj : MonoBehaviour
 
     bool validateInteration(string tag)
     {
-        if (tag == "Rotate" || tag == "Value" || tag == "Pickup")
+        if (tag == "Rotate" || tag == "Value" || tag == "Pickup" || tag == "Color")
             return true;
         return false;
+    }
+
+    Color nextColor(Color color)
+    {
+        Color ret = new Color(0, 0, 0);
+        if (color == Color.white)
+            ret = Color.red;
+        else if (color == Color.red)
+            ret = Color.green;
+        else if (color == Color.green)
+            ret = Color.blue;
+        else if (color == Color.blue)
+            ret = Color.black;
+        else if (color == Color.black)
+            ret = Color.white;
+        return ret;
     }
 
     public void handleInteration()
     {
         if (obj != null)
         {
-            //Debug.Log("Interacted");
-            if (obj.transform.tag == "Rotate")
+            switch (obj.transform.tag)
             {
-                if (obj.transform.name == "DanceCode")
-                    manager.enterView("R_test");
-            }
-            else if (obj.transform.tag == "Value")
-            {
-                UnityEngine.UI.Text text = obj.GetComponentInChildren<UnityEngine.UI.Text>();
-                //Debug.Log("interacted: " + text);
-                int ch = text.text[0];
-                ch++;
-                if (ch > 90)
-                    ch = 65;
-                text.text = "";
-                text.text += (char)ch;
-            }
-            else if (obj.transform.tag == "Pickup")
-            {
-                if (obj.transform.name == "flashlight")
-                    manager.hasLight = true;
-                Destroy(obj);
-                obj = null;
+                case "Rotate":
+                    if (obj.transform.name == "DanceCode")
+                        manager.enterView("R_test");
+                    break;
+
+                case "Value":
+                    UnityEngine.UI.Text text = obj.GetComponentInChildren<UnityEngine.UI.Text>();
+                    //Debug.Log("interacted: " + text);
+                    int ch = text.text[0];
+                    ch++;
+                    if (ch > 90)
+                        ch = 65;
+                    text.text = "";
+                    text.text += (char)ch;
+                    break;
+
+                case "Pickup":
+                    if (obj.transform.name == "flashlight")
+                        manager.hasLight = true;
+                    Destroy(obj);
+                    obj = null;
+                    break;
+
+                case "Color":
+                    Renderer render = obj.GetComponent<Renderer>();
+                    Color next = nextColor(render.material.color);
+                    render.material.color = next;
+                    break;
+
+                default:
+                    break;
             }
         }
     }
