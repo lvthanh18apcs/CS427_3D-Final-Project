@@ -7,6 +7,7 @@ TagManager:
   - Value
   - Rotate
   - Pickup
+  - Color
   layers:
   - Default
   - TransparentFX
