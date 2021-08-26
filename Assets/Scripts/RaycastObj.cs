@@ -50,7 +50,7 @@ public class RaycastObj : MonoBehaviour
             if (obj.transform.tag == "Rotate")
             {
                 if (obj.transform.name == "DanceCode")
-                    manager.viewObject("R_test");
+                    manager.enterView("R_test");
             }
             else if (obj.transform.tag == "Value")
             {

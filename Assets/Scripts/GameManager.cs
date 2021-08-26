@@ -6,7 +6,15 @@ enum Mode: int
 {
     freeMode = 0,
     viewMode = 1,
-    storyMode = 2
+    storyMode = 2,
+    pauseMode = 3
+}
+
+enum RenderLayer: int
+{
+    freeMode = 55, //first 5 layers
+    viewMode = 64, //layer 6
+    pauseMode = 128 //layer 7
 }
 
 public class GameManager : MonoBehaviour
@@ -17,32 +25,31 @@ public class GameManager : MonoBehaviour
 
     PlayerMovement movement;
     LookWithMouse mouseMovement;
-    Light lightsrc;
     RaycastObj vision;
-    Camera cam;
+    StoryManager story;
+
+
+    Light lightsrc;
+    [SerializeField] Camera cam;
     [SerializeField] UnityEngine.UI.Image background;
     [SerializeField] UnityEngine.UI.Text UIText;
     [SerializeField] UnityEngine.UI.Text modelText;
     [SerializeField] UnityEngine.UI.Image storyPanel;
-    UnityEngine.UI.Text storyLine;
+    [SerializeField] UnityEngine.UI.Text storyLine;
+    [SerializeField] UnityEngine.UI.Text UIobjective;
     GameObject rotate_Obj;
-    LayerMask mask;
-    StoryManager story;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         movement = (PlayerMovement)gameObject.GetComponent(typeof(PlayerMovement));
         mouseMovement = (LookWithMouse)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(LookWithMouse));
-        lightsrc = (Light)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(Light));
         vision = (RaycastObj)gameObject.GetComponent(typeof(RaycastObj));
-        cam = (Camera)gameObject.GetComponentInChildren(typeof(Camera));
         story = (StoryManager)gameObject.GetComponent(typeof(StoryManager));
-        storyLine = storyPanel.GetComponentInChildren<UnityEngine.UI.Text>();
+        lightsrc = (Light)gameObject.GetComponentInChildren(typeof(Light));
         storyPanel.enabled = false;
         storyLine.enabled = false;
         rotate_Obj = null;
-        mask = cam.cullingMask;
         Cursor.lockState = CursorLockMode.Locked;
         cur_mode = (int)Mode.freeMode;
     }
@@ -58,19 +65,38 @@ public class GameManager : MonoBehaviour
             UIText.enabled = false;
     }
 
-    public void viewObject(string name)
+    public void enterView(string name)
     {
         freeze = true;
         Cursor.visible = true;
         cur_mode = (int)Mode.viewMode;
         Cursor.lockState = CursorLockMode.None;
-        cam.cullingMask = ~mask;
+        cam.cullingMask = (int)RenderLayer.viewMode;
 
         var prefab = Resources.Load(name);
         rotate_Obj = (GameObject)Instantiate(prefab,cam.transform.position + cam.transform.forward*3 , cam.transform.rotation);
     }
+    public void exitView()
+    {
+        freeze = false;
+        Cursor.visible = false;
+        cur_mode = (int)Mode.freeMode;
+        Cursor.lockState = CursorLockMode.Locked;
+        cam.cullingMask = (int)RenderLayer.freeMode;
 
-    public void finishStory()
+        Destroy(rotate_Obj);
+        rotate_Obj = null;
+    }
+
+    public void enterStory()
+    {
+        freeze = true;
+        cur_mode = (int)Mode.storyMode;
+        storyPanel.enabled = true;
+        storyLine.enabled = true;
+        story.runStory(storyLine, 0);
+    }
+    public void exitStory()
     {
         storyPanel.enabled = false;
         storyLine.enabled = false;
@@ -78,31 +104,67 @@ public class GameManager : MonoBehaviour
         cur_mode = (int)Mode.freeMode;
     }
 
+    public void PauseGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        cur_mode = (int)Mode.pauseMode;
+        freeze = true;
+        cam.cullingMask = (int)RenderLayer.pauseMode;
+    }
+    public void ResumeGame()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        cur_mode = (int)Mode.freeMode;
+        freeze = false;
+        cam.cullingMask = (int)RenderLayer.freeMode;
+    }
+
+    public void OnResumeClick()
+    {
+        Debug.Log("Resume");
+    }
+    public void OnSettingsClick()
+    {
+        Debug.Log("Settings");
+    }
+    public void OnQuitClick()
+    {
+        Debug.Log("Quit");
+//#if UNITY_EDITOR
+//        // Application.Quit() does not work in the editor so
+//        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+//        UnityEditor.EditorApplication.isPlaying = false;
+//#else
+//        Application.Quit();
+//#endif
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && cur_mode == (int)Mode.freeMode)
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (cur_mode == (int)Mode.freeMode)
+            {
+                PauseGame();
+            }
+            else if (cur_mode == (int)Mode.pauseMode)
+            {
+                ResumeGame();
+            }
+            else if (cur_mode == (int)Mode.viewMode)
+            {
+                exitView();
+            }
+        }
+        else if (Input.GetMouseButtonDown(0) && cur_mode == (int)Mode.freeMode)
         {
             vision.handleInteration();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && cur_mode == (int)Mode.viewMode)
+        else if (Input.GetKeyDown(KeyCode.F2) && cur_mode == (int)Mode.freeMode)
         {
-            freeze = false;
-            Cursor.visible = false;
-            cur_mode = (int)Mode.freeMode;
-            Cursor.lockState = CursorLockMode.Locked;
-            cam.cullingMask = mask;
-
-            Destroy(rotate_Obj);
-            rotate_Obj = null;
-        }
-        else if (Input.GetKeyDown(KeyCode.F1) && cur_mode == (int)Mode.freeMode)
-        {
-            freeze = true;
-            cur_mode = (int)Mode.storyMode;
-            storyPanel.enabled = true;
-            storyLine.enabled = true;
-            story.runStory(storyLine, 0);
+            enterStory();
         }
 
         if (Input.GetKeyDown(KeyCode.F) && hasLight)

@@ -50,7 +50,7 @@ public class StoryManager : MonoBehaviour
                     if (dialog >= story[storyNum].Count)
                     {
                         write = false;
-                        manager.finishStory();
+                        manager.exitStory();
                         return;
                     }
                 }
