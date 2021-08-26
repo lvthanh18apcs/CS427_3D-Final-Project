@@ -37,6 +37,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] UnityEngine.UI.Image storyPanel;
     [SerializeField] UnityEngine.UI.Text storyLine;
     [SerializeField] UnityEngine.UI.Text UIobjective;
+
+    [SerializeField] UnityEngine.UI.Slider soundSlider;
+    [SerializeField] UnityEngine.UI.Slider sfxSlider;
+    [SerializeField] UnityEngine.UI.Slider mouseSenseSlider;
     GameObject rotate_Obj;
     
     // Start is called before the first frame update
@@ -121,11 +125,19 @@ public class GameManager : MonoBehaviour
 
     public void OnResumeClick()
     {
-        Debug.Log("Resume");
+        ResumeGame();
     }
-    public void OnSettingsClick()
+    public void OnSettingsOpen()
     {
-        Debug.Log("Settings");
+        Settings set = SaveManager.loadSettings();
+        soundSlider.value = set.sound;
+        sfxSlider.value = set.sfx;
+        mouseSenseSlider.value = set.mouseSensitivity;
+    }
+    public void OnSettingsClose()
+    {
+        Settings set = new Settings(soundSlider.value, sfxSlider.value, mouseSenseSlider.value);
+        SaveManager.saveSettings(set);
     }
     public void OnQuitClick()
     {
