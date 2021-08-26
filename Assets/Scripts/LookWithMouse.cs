@@ -18,6 +18,11 @@ public class LookWithMouse : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
+    public void OnMouseSensitivityChanged(float val)
+    {
+        mouseSensitivity = val;
+    }
+
     // Update is called once per frame
     void Update()
     {
