@@ -7,12 +7,14 @@ public class RaycastObj : MonoBehaviour
     public static string selectedObj;
     [SerializeField] string internalObject;
     [SerializeField] RaycastHit theObj;
+    [SerializeField] Light lamp1, lamp2, lamp3, lamp4, lamp5;
     GameObject obj;
     GameManager manager;
 
     private void Start()
     {
         manager = (GameManager)gameObject.GetComponent(typeof(GameManager));
+        smoke_reset();
     }
 
     void Update()
@@ -37,7 +39,7 @@ public class RaycastObj : MonoBehaviour
 
     bool validateInteration(string tag)
     {
-        if (tag == "Rotate" || tag == "Value" || tag == "Pickup" || tag == "Color")
+        if (tag == "Rotate" || tag == "Value" || tag == "Pickup" || tag == "Color" || tag == "Switch")
             return true;
         return false;
     }
@@ -58,6 +60,15 @@ public class RaycastObj : MonoBehaviour
         return ret;
     }
 
+    void smoke_reset()
+    {
+        lamp1.enabled = false;
+        lamp2.enabled = false;
+        lamp3.enabled = false;
+        lamp4.enabled = false;
+        lamp5.enabled = false;
+    }
+
     public void handleInteration()
     {
         if (obj != null)
@@ -66,7 +77,9 @@ public class RaycastObj : MonoBehaviour
             {
                 case "Rotate":
                     if (obj.transform.name == "DanceCode")
-                        manager.enterView("R_test");
+                        manager.enterView("R_test",5);
+                    else if (obj.transform.name == "armoury_letter_obj")
+                        manager.enterView("armoury_letter_obj");
                     break;
 
                 case "Value":
@@ -76,6 +89,8 @@ public class RaycastObj : MonoBehaviour
                     ch++;
                     if (ch > 90)
                         ch = 65;
+                    if (ch < 65)
+                        ch = 65;
                     text.text = "";
                     text.text += (char)ch;
                     break;
@@ -83,6 +98,11 @@ public class RaycastObj : MonoBehaviour
                 case "Pickup":
                     if (obj.transform.name == "flashlight")
                         manager.hasLight = true;
+                    else if (obj.transform.name == "DiningKey")
+                        manager.enterView("DiningKey", 4, "Key to Dining Room");
+                    else if (obj.transform.name == "redkey")
+                        manager.enterView("redkey", 3, "Heart Key");
+                    
                     Destroy(obj);
                     obj = null;
                     break;
@@ -92,6 +112,47 @@ public class RaycastObj : MonoBehaviour
                     Color next = nextColor(render.material.color);
                     render.material.color = next;
                     break;
+
+                case "Switch":
+                    if (obj.transform.name == "smoke_switch1")
+                    {
+                        lamp3.enabled = !lamp3.enabled;
+                    }
+                    else if (obj.transform.name == "smoke_switch2")
+                    {
+                        lamp3.enabled = !lamp3.enabled;
+                        lamp4.enabled = !lamp4.enabled;
+                    }
+                    else if (obj.transform.name == "smoke_switch3")
+                    {
+                        lamp2.enabled = !lamp2.enabled;
+                        lamp4.enabled = !lamp4.enabled;
+                        lamp5.enabled = !lamp5.enabled;
+                    }
+                    else if (obj.transform.name == "smoke_switch4")
+                    {
+                        lamp1.enabled = !lamp1.enabled;
+                        lamp5.enabled = !lamp5.enabled;
+                    }
+                    else if (obj.transform.name == "smoke_switch5")
+                    {
+                        lamp1.enabled = !lamp1.enabled;
+                        lamp4.enabled = !lamp4.enabled;
+                    }
+                    else if (obj.transform.name == "smoke_reset")
+                    {
+                        smoke_reset();
+                    }
+                    break;
+
+                //case "Untagged":
+                //    if (obj.transform.name == "greenkey")
+                //    {
+                //        obj.transform.tag = "Pickup";
+                //        Rigidbody rigid = obj.GetComponent<Rigidbody>();
+                //        rigid.useGravity = true;
+                //    }
+                //    break;
 
                 default:
                     break;

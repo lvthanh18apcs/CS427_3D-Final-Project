@@ -8,6 +8,8 @@ TagManager:
   - Rotate
   - Pickup
   - Color
+  - Door
+  - Switch
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - ModelView
   - Pause
-  - 
+  - Map
   - 
   - 
   - 
