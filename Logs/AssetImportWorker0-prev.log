@@ -15,11 +15,11 @@ D:/CODES/CS427 - Game/FinalProject-URP/CS427_3D-Final-Project
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-55480
+58131
 Successfully changed project path to: D:/CODES/CS427 - Game/FinalProject-URP/CS427_3D-Final-Project
 D:/CODES/CS427 - Game/FinalProject-URP/CS427_3D-Final-Project
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 52.90 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 57.76 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.11f1 (99c7afb366b3)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/Resources/UnitySubsystems
@@ -36,96 +36,298 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56504
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56472
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.003277 seconds.
+Registered in 0.002809 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 64.61 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 49.75 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.273 seconds
+- Completed reload, in  2.127 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.005260 seconds.
+Registered in 0.004084 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 47.91 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 49.23 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.138 seconds
+- Completed reload, in  1.152 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2754 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 126.9 MB.
-System memory in use after: 127.1 MB.
+Unloading 2757 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 218.9 MB.
+System memory in use after: 219.1 MB.
 
-Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 3194.
-Total: 2.346500 ms (FindLiveObjects: 0.243800 ms CreateObjectMapping: 0.117600 ms MarkObjects: 1.911400 ms  DeleteObjects: 0.072600 ms)
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 3214.
+Total: 3.870100 ms (FindLiveObjects: 0.549900 ms CreateObjectMapping: 0.246700 ms MarkObjects: 2.942800 ms  DeleteObjects: 0.128900 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/ProjectScene.unity
-  artifactKey: Guid(b4cdb83c515fa5e469fc962e0a502240) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/ProjectScene.unity using Guid(b4cdb83c515fa5e469fc962e0a502240) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1af1c3d6d20f91d51af1231bc24a98e') in 0.018701 seconds
-  Import took 0.022824 seconds .
+  path: Assets/Import/spade key/source/re2keys/key_diamond_mat_Metallic.png
+  artifactKey: Guid(cc9d03b0f7875e74eaadecc8d375b829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_diamond_mat_Metallic.png using Guid(cc9d03b0f7875e74eaadecc8d375b829) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9e65cd72ef23d5214ec2c1eb020c7e9') in 0.104694 seconds
+  Import took 0.109983 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003900 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.113 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2640 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 119.4 MB.
-System memory in use after: 119.7 MB.
-
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 3197.
-Total: 2.365500 ms (FindLiveObjects: 0.226300 ms CreateObjectMapping: 0.105000 ms MarkObjects: 2.013300 ms  DeleteObjects: 0.020100 ms)
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_heart_mat_Height.png
+  artifactKey: Guid(dccac154085f63e4abe6e853a8d4b889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_heart_mat_Height.png using Guid(dccac154085f63e4abe6e853a8d4b889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6758cdc2d5a1e9e9eb77723421d3cd66') in 0.017708 seconds
+  Import took 0.025030 seconds .
 
 ========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004751 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.080 seconds
-Platform modules already initialized, skipping
-Shader 'Universal Render Pipeline/Particles/Lit': fallback shader 'Universal Render Pipeline/Particles/SimpleLit' not found
-Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2640 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 119.5 MB.
-System memory in use after: 119.7 MB.
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/Import/spade key/source/re2keys/keys.fbx
+  artifactKey: Guid(3e7b11d0398de89429fd05a29b2f2ad3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/keys.fbx using Guid(3e7b11d0398de89429fd05a29b2f2ad3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80c059bc248bebd523eac0b56dfb84a8') in 0.295379 seconds
+  Import took 0.302666 seconds .
 
-Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 3200.
-Total: 2.070200 ms (FindLiveObjects: 0.231100 ms CreateObjectMapping: 0.108000 ms MarkObjects: 1.709500 ms  DeleteObjects: 0.020900 ms)
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_club_mat_Height.png
+  artifactKey: Guid(f2920daaa7111e54abf5b4b3c658dd89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_club_mat_Height.png using Guid(f2920daaa7111e54abf5b4b3c658dd89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c27783a0ba17dd38dbd9ac73d8205fb3') in 0.012963 seconds
+  Import took 0.018901 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000272 seconds.
+  path: Assets/Import/spade key/source/re2keys
+  artifactKey: Guid(ae04fbda897bac34fbc3cb79468e4020) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys using Guid(ae04fbda897bac34fbc3cb79468e4020) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4eb8bba60f56c71697998468f8e4a7f0') in 0.005930 seconds
+  Import took 0.011006 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_diamond_mat_Height.png
+  artifactKey: Guid(9ff7ddbbe2735da48ada4c77f7993a54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_diamond_mat_Height.png using Guid(9ff7ddbbe2735da48ada4c77f7993a54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcb6d510ae672d5ec6c435f04d17089e') in 0.013371 seconds
+  Import took 0.018604 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/Import/spade key
+  artifactKey: Guid(ff85d99dd3204084e821e74ddb373023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key using Guid(ff85d99dd3204084e821e74ddb373023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0c880873144ae4176fa2f0938d9e9a8') in 0.006247 seconds
+  Import took 0.013049 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Import/spade key/source
+  artifactKey: Guid(be8dcd68020cad7498345e44edc1880b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source using Guid(be8dcd68020cad7498345e44edc1880b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03c5123dcb91a9ed70ec3620305cd9e9') in 0.005741 seconds
+  Import took 0.009930 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_spade_mat_Normal_DirectX.png
+  artifactKey: Guid(7569e1185c29d1a4e812a3a0802108cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_spade_mat_Normal_DirectX.png using Guid(7569e1185c29d1a4e812a3a0802108cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d2739638fe0bd64e03145b37201f776') in 0.021911 seconds
+  Import took 0.030219 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_diamond_mat_Normal.png
+  artifactKey: Guid(3f40d929c9018c142a47818b3e32ec2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_diamond_mat_Normal.png using Guid(3f40d929c9018c142a47818b3e32ec2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '994b823f22cb49e8d68d07693e88a3f5') in 0.012733 seconds
+  Import took 0.020640 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_club_mat_Normal.png
+  artifactKey: Guid(97b3ab5eaad34e145a8f637515f4bbc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_club_mat_Normal.png using Guid(97b3ab5eaad34e145a8f637515f4bbc4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fdfa7e695434a153028ccb4c3eeab1b') in 0.022019 seconds
+  Import took 0.030330 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_spade_mat_Base_Color.png
+  artifactKey: Guid(99ab2b8fe121ef94f85a4f2b3c7b10fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_spade_mat_Base_Color.png using Guid(99ab2b8fe121ef94f85a4f2b3c7b10fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1874db7d396d6f347be443c73288af1d') in 0.018096 seconds
+  Import took 0.024892 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_heart_mat_Metallic.png
+  artifactKey: Guid(9510b9e0c2f536a408e3c9097ed8e36f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_heart_mat_Metallic.png using Guid(9510b9e0c2f536a408e3c9097ed8e36f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0018c0dd91e7c56d91071289ce43fe97') in 0.019136 seconds
+  Import took 0.024960 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000263 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_club_mat_Roughness.png
+  artifactKey: Guid(43e02015e6bc8e346983c6bb96aa2390) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_club_mat_Roughness.png using Guid(43e02015e6bc8e346983c6bb96aa2390) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6efe2f81eea8835ca4407413491bb15d') in 0.017487 seconds
+  Import took 0.024571 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000260 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_spade_mat_Roughness.png
+  artifactKey: Guid(2abbde8acc0863649b60b28decbdf0f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_spade_mat_Roughness.png using Guid(2abbde8acc0863649b60b28decbdf0f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '621390e56fd35ce43f1fd65f0a8c182e') in 0.022047 seconds
+  Import took 0.029054 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_heart_mat_Base_Color.png
+  artifactKey: Guid(ebe74062f68783446aae7a759387349a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_heart_mat_Base_Color.png using Guid(ebe74062f68783446aae7a759387349a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7042c915ec8bdfa5b4f883263cfd7ed8') in 0.016507 seconds
+  Import took 0.022004 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000252 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_club_mat_Metallic.png
+  artifactKey: Guid(a912b3563958c9e4e903e28e271c8ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_club_mat_Metallic.png using Guid(a912b3563958c9e4e903e28e271c8ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b4e825760e7baad24acedbc03812b20') in 0.015635 seconds
+  Import took 0.020825 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_diamond_mat_Normal_DirectX.png
+  artifactKey: Guid(66e2dc49aa4ccc24facaff4ed341fe19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_diamond_mat_Normal_DirectX.png using Guid(66e2dc49aa4ccc24facaff4ed341fe19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ffffb705cdaacde3a3b9548def4d86b') in 0.017406 seconds
+  Import took 0.022440 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000199 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_heart_mat_Roughness.png
+  artifactKey: Guid(49cfcef1b074e8740ad50a8ed1e6b48a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_heart_mat_Roughness.png using Guid(49cfcef1b074e8740ad50a8ed1e6b48a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '66efc21a7bdd55ccab7252fc12e90642') in 0.014660 seconds
+  Import took 0.020372 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_club_mat_Normal_DirectX.png
+  artifactKey: Guid(99a49909680efe145a9b8d44c353252d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_club_mat_Normal_DirectX.png using Guid(99a49909680efe145a9b8d44c353252d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0fc4c63d82c44d6658cdea167f80e4e') in 0.014158 seconds
+  Import took 0.019837 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_club_mat_Base_Color.png
+  artifactKey: Guid(3d4f936f1bb23f841a2a3281d1c1f3ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_club_mat_Base_Color.png using Guid(3d4f936f1bb23f841a2a3281d1c1f3ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac18f2dae47fe8e8d718921ad6e054aa') in 0.014704 seconds
+  Import took 0.021011 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000196 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_diamond_mat_Roughness.png
+  artifactKey: Guid(c9bb5f5e9d70b3d4ba81fba3ba4b334a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_diamond_mat_Roughness.png using Guid(c9bb5f5e9d70b3d4ba81fba3ba4b334a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d24424bf33ec72ac4ddf6884bca1a17') in 0.015838 seconds
+  Import took 0.021608 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000188 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_diamond_mat_Base_Color.png
+  artifactKey: Guid(ca39a4176ce09424dad02869dc0e3663) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_diamond_mat_Base_Color.png using Guid(ca39a4176ce09424dad02869dc0e3663) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '249e7e077373b0923319c029eaa050c0') in 0.019319 seconds
+  Import took 0.026431 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_spade_mat_Normal.png
+  artifactKey: Guid(39b3609b1eb06bb4eb5e5112c38c6a89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_spade_mat_Normal.png using Guid(39b3609b1eb06bb4eb5e5112c38c6a89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '890523af947ad5ae409bb3b80dc230ee') in 0.017775 seconds
+  Import took 0.024242 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_heart_mat_Normal.png
+  artifactKey: Guid(ee29534f664049f4e9ca950124dd858c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_heart_mat_Normal.png using Guid(ee29534f664049f4e9ca950124dd858c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a59f5fe390718b476561799405c92a4') in 0.015995 seconds
+  Import took 0.023186 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_spade_mat_Metallic.png
+  artifactKey: Guid(25242b1f53ca3b64eb9397a67f506b8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_spade_mat_Metallic.png using Guid(25242b1f53ca3b64eb9397a67f506b8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ca198b63cc32b036233734034373d20') in 0.013926 seconds
+  Import took 0.018830 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000197 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_spade_mat_Height.png
+  artifactKey: Guid(ddfa7ee1283a8fc458e87f1793e3db61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_spade_mat_Height.png using Guid(ddfa7ee1283a8fc458e87f1793e3db61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c75866c9198a4c7b6337757e491429ce') in 0.011491 seconds
+  Import took 0.016031 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Import/spade key/source/re2keys/key_heart_mat_Normal_DirectX.png
+  artifactKey: Guid(16b4a58cf14690645a74384dc564e04a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/spade key/source/re2keys/key_heart_mat_Normal_DirectX.png using Guid(16b4a58cf14690645a74384dc564e04a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a658e587be183a5be556023925a41211') in 0.014258 seconds
+  Import took 0.019908 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39.867769 seconds.
+  path: Assets/Import/Resident_Evil_Keys
+  artifactKey: Guid(7a6e8e41dff47d6458a10b7f8cc78684) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/Resident_Evil_Keys using Guid(7a6e8e41dff47d6458a10b7f8cc78684) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6a740f0fde1264fef8ebe9d1f06d99e') in 0.006015 seconds
+  Import took 0.010597 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 64.108637 seconds.
+  path: Assets/Import
+  artifactKey: Guid(4f6a73f97b165884daecd4826706b628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import using Guid(4f6a73f97b165884daecd4826706b628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cda76c5da3f6322eaf8fe4d6a590da55') in 0.005882 seconds
+  Import took 0.010359 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.036642 seconds.
+  path: Assets/Import/IKEA_TRNABY_-_desk_lamp/IKEA_TRNABY_-_desk_lamp.prefab
+  artifactKey: Guid(2271dd0139f345a41ad128f2b69ff18d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/IKEA_TRNABY_-_desk_lamp/IKEA_TRNABY_-_desk_lamp.prefab using Guid(2271dd0139f345a41ad128f2b69ff18d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '350c0b92bcb25ada6fd0713ec226c4eb') in 0.209283 seconds
+  Import took 0.214877 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 95.410648 seconds.
+  path: Assets/Import/Resident_Evil_Keys/meshes
+  artifactKey: Guid(25b5d56950970f84c89ffed47108c9b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Import/Resident_Evil_Keys/meshes using Guid(25b5d56950970f84c89ffed47108c9b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0dd87e512ec48cdd4abf8b0d77cf6d1') in 0.014123 seconds
+  Import took 0.018929 seconds .
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
