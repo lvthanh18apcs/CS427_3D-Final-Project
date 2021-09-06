@@ -15,14 +15,33 @@ public class ObjectiveManager : MonoBehaviour
         objectives = new List<string>();
         shown_objectives = new List<int>();
 
+        /*
         objectives.Add("Find a way to cut down electricity.");
         objectives.Add("Go home. My shift ends now.");
+        */
 
+        objectives.Add("Find a way to turn off lights.\n");
+        objectives.Add("Enter password to unlock the door.\n" +
+            "The hint must be somewhere in this Billiard room.\n");
+        objectives.Add("Unlock doors to the Armoury and Upper Vestibule.\n");
+        objectives.Add("Explore the Armoury room.\n");
+        objectives.Add("Find a way to go to Porcelian, the room where the hammer is located.\n");
+        objectives.Add("Activate the Shield Force.\n");
+        objectives.Add("Explore the Dining room.\n");
+        objectives.Add("The could be something in the Serving room. Find it.\n");
+        objectives.Add("Comebine the runestones and flashlight to unlock the door to Great Dawing room.\n");
+        objectives.Add("Find the decipher password, somewhere in the bunch of papers on the floor.\n");
+        objectives.Add("Leave the museum.\n");
         shown_objectives.Add(0);
         shown_objectives.Add(1);
     }
 
-    void addObjective(int id)
+    public string getObjective(int id)
+    {
+        return objectives[id];
+    }
+
+    public void addObjective(int id)
     {
         for(int i =0;i<shown_objectives.Count;++i)
             if (id == shown_objectives[i])
@@ -33,7 +52,7 @@ public class ObjectiveManager : MonoBehaviour
         shown_objectives.Add(id);
     }
 
-    void deleteObjective(int id)
+    public void deleteObjective(int id)
     {
         for(int i =0;i<shown_objectives.Count;++i)
             if (id == shown_objectives[i])

@@ -21,20 +21,27 @@ enum RenderLayer: int
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] bool freeze = false;
-    public bool hasLight = true;
+    [System.NonSerialized] public bool hasLight = true;
     int cur_mode;
 
     PlayerMovement movement;
     LookWithMouse mouseMovement;
     RaycastObj vision;
     StoryManager story;
-    public LiftDoor liftDoor;
+    ObjectiveManager objectiveManager;
+    CharacterController physics;
+    CameraEffect cameffect;
+    [System.NonSerialized] public LiftDoor liftDoor;
 
+    [System.NonSerialized] public List<string> door_name = new List<string>();
+    [System.NonSerialized] public List<bool> door = new List<bool>();
+    [System.NonSerialized] public List<GameObject> lifted = new List<GameObject>();
 
     Light lightsrc;
     [SerializeField] Camera cam;
+    [SerializeField] UnityEngine.UI.Text UIhint;
     [SerializeField] UnityEngine.UI.Text UIText;
+    [SerializeField] UnityEngine.UI.Text timedObjective;
     [SerializeField] UnityEngine.UI.Text modelText;
     [SerializeField] UnityEngine.UI.Text objName;
     [SerializeField] UnityEngine.UI.Image storyPanel;
@@ -47,7 +54,33 @@ public class GameManager : MonoBehaviour
     [SerializeField] UnityEngine.UI.Slider sfxSlider;
     [SerializeField] UnityEngine.UI.Slider mouseSenseSlider;
     GameObject rotate_Obj;
+
+    //gameSetup
+    bool finish0 = false, finish1 = false, finish2 = false, finish4 = false, finish5 = false;
+    [System.NonSerialized] public bool keyI = false, keyII = false, keyDin = false, mapNflash = false;
+    [System.NonSerialized] public bool ready_to_play = false;
+    [SerializeField] GameObject dining_key, key_I, key_II;
+    [SerializeField] GameObject initLight;
+    [SerializeField] GameObject quiz_setup1, quiz_setup2, quiz_setup4, quiz_setup5;
+    [SerializeField] GameObject quiz1, quiz2, quiz4, quiz5;
+
+    //quiz0
+    [SerializeField] GameObject cynblock, lightning, lever, crate;
+
+    //quiz1
+    [SerializeField] GameObject cubeblock;
+
+    //quiz2
+    [SerializeField] GameObject greenkey;
+
+    //quiz4
+    [SerializeField] GameObject purplekey;
+
+    //quiz5
+    [SerializeField] GameObject sphereblock, bluekey;
+
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,13 +88,272 @@ public class GameManager : MonoBehaviour
         mouseMovement = (LookWithMouse)gameObject.GetComponentInChildren<Camera>().GetComponent(typeof(LookWithMouse));
         vision = (RaycastObj)gameObject.GetComponent(typeof(RaycastObj));
         story = (StoryManager)gameObject.GetComponent(typeof(StoryManager));
+        objectiveManager = (ObjectiveManager)gameObject.GetComponent(typeof(ObjectiveManager));
+        physics = (CharacterController)gameObject.GetComponent(typeof(CharacterController));
         lightsrc = (Light)gameObject.GetComponentInChildren(typeof(Light));
         liftDoor = (LiftDoor)gameObject.GetComponent(typeof(LiftDoor));
+        cameffect = (CameraEffect)gameObject.GetComponent(typeof(CameraEffect));
         storyPanel.enabled = false;
         storyLine.enabled = false;
         rotate_Obj = null;
+        UIhint.enabled = false;
+        timedObjective.enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
         cur_mode = (int)Mode.freeMode;
+        lightsrc.enabled = false;
+
+        OnSettingsOpen();
+        door_name.Add("Armoury_Smoking"); door_name.Add("Armoury_Morning"); 
+        door_name.Add("Porcelain_Billiard"); door_name.Add("Billiard_Armoury");
+        door_name.Add("Smoking_Great"); door_name.Add("Great_Small");
+        door_name.Add("Morning_Great"); door_name.Add("Morning_Upper");
+        door_name.Add("Upper_Small"); door_name.Add("Upper_Dining");
+        door_name.Add("Dining_Serving"); door_name.Add("Dining_Serving (1)");
+        for (int i = 0; i < door_name.Count; ++i)
+            door.Add(false);
+
+        UpdateCheckpoint();
+        if (!finish0)
+            InitStart();
+        else
+        {
+            if (mapNflash)
+                Unlock2Ways();
+            else
+                initRestart();
+            if (keyDin)
+                UnlockDining();
+            if (finish1)
+                quiz1.SetActive(false);
+            if (finish2)
+                quiz2.SetActive(false);
+            if (finish4)
+                quiz4.SetActive(false);
+            if (finish5)
+                quiz5.SetActive(false);
+            if (keyI)
+            {
+                vision.emptyCrate();
+                key_I.SetActive(false);
+            }
+            if(keyII)
+                key_II.SetActive(false);
+        }
+        ready_to_play = true;
+    }
+
+    public void UpdateCheckpoint()
+    {
+        //loading screen here
+        //Checkpoints checkpoints = SaveManager.loadCheckpoints();
+        //transform.position = checkpoints.lastpos;
+        //finish0 = checkpoints.finish0;
+        //finish1 = checkpoints.finish1;
+        //finish2 = checkpoints.finish2;
+        //finish4 = checkpoints.finish4;
+        //finish5 = checkpoints.finish5;
+        //keyI = checkpoints.keyI;
+        //keyII = checkpoints.keyII;
+        //keyDin = checkpoints.keyDin;
+        //mapNflash = checkpoints.mapNflash;
+    }
+
+    public void saveCheckpoint()
+    {
+        //Checkpoints checkpoints = new Checkpoints(finish0, finish1, finish2, finish4, finish5, keyI, keyII, keyDin, mapNflash, transform.position);
+        //SaveManager.saveCheckpoints(checkpoints);
+    }
+
+    public void InitStart()
+    {
+        quiz_setup1.SetActive(false);
+        quiz_setup2.SetActive(false);
+        quiz_setup4.SetActive(false);
+        quiz_setup5.SetActive(false);
+        changeDoorStatus(true, "", 3);
+        changeDoorStatus(true, "", 1);
+        changeDoorStatus(true, "", 7);
+        lightning.SetActive(false);
+        dining_key.SetActive(false);
+    }
+
+    public void LeverDown()
+    {
+        lever.tag = "Untagged";
+        //initLight will be designed later
+        initLight.SetActive(false);
+        for (int i = 0; i < lifted.Count; ++i)
+        {
+            liftDoor.downDoorInstant(GameObject.Find(lifted[i].name));
+            changeDoorStatus(false, lifted[i].name, -1);
+        }
+
+        changeDoorStatus(false, "", 3);
+        changeDoorStatus(false, "", 1);
+        changeDoorStatus(false, "", 7);
+        changeDoorStatus(true, "", 2);
+        //playStory
+        lightsrc.enabled = true;
+    }
+
+    public void LeverUp()
+    {
+        if (finish1 && finish2 && finish4 && finish5)
+        {
+            crate.tag = "Switch";
+            cynblock.SetActive(true);
+        }
+        else
+        {
+            vision.downLever();
+            ShowHint("Do not have enough keys");
+        }
+    }
+
+    public void FinishQuiz0()
+    {
+        if (!finish0)
+        {
+            finish0 = true;
+            liftDoor.downDoorInstant(GameObject.Find(door_name[2]));
+            cynblock.SetActive(false);
+            lightning.SetActive(true);
+            changeDoorStatus(false, "", 2);
+            StartCoroutine(LightningStrike());
+        }
+    }
+
+    public void initRestart()
+    {
+        Destroy(lightning);
+        vision.downLever();
+        transform.position = new Vector3(16f, 28f, -67f);
+        Quaternion tmp = new Quaternion();
+        tmp.eulerAngles = new Vector3(0, -25, 0);
+        transform.rotation = tmp;
+        movement.enabled = true;
+        hasLight = false;
+        lightsrc.enabled = false;
+        initLight.SetActive(false);
+        Instantiate(Resources.Load("flashlight"));
+        Instantiate(Resources.Load("morning_map"));
+        saveCheckpoint();
+        dining_key.SetActive(true);
+        quiz_setup1.SetActive(true);
+        quiz_setup2.SetActive(true);
+        quiz_setup4.SetActive(true);
+        quiz_setup5.SetActive(true);
+        changeDoorStatus(true, "", 2);
+    }
+
+    public void Unlock2Ways()
+    {
+        changeDoorStatus(true, "", 1);
+        changeDoorStatus(true, "", 7);
+        mapNflash = true;
+        saveCheckpoint();
+    }
+
+    public void UnlockDining()
+    {
+        keyDin = true;
+        saveCheckpoint();
+        changeDoorStatus(true, "", 9);
+    }
+
+    //finish Armoury quiz
+    public void SolveQuiz1()
+    {
+        cubeblock.SetActive(false);
+    }
+
+    //when the key is picked up
+    public void FinishQuiz1()
+    {
+        finish1 = true;
+        saveCheckpoint();
+        changeDoorStatus(true, "", 0);
+    }
+
+    public void SolveQuiz2()
+    {
+        greenkey.transform.tag = "Pickup";
+        Rigidbody rigid = greenkey.GetComponent<Rigidbody>();
+        rigid.useGravity = true;
+    }
+
+    public void FinishQuiz2()
+    {
+        finish2 = true;
+        saveCheckpoint();
+        changeDoorStatus(true, "", 3);
+        changeDoorStatus(true, "", 2);
+        if (finish5)
+            UnlockKeyI();
+    }
+
+    public void SolveQuiz4()
+    {
+        purplekey.transform.tag = "Pickup";
+        Rigidbody rigid = purplekey.GetComponent<Rigidbody>();
+        rigid.useGravity = true;
+    }
+
+    public void FinishQuiz4()
+    {
+        finish4 = true;
+        saveCheckpoint();
+        changeDoorStatus(true, "", 8);
+    }
+
+    public void SolveQuiz5()
+    {
+        sphereblock.SetActive(false);
+        bluekey.GetComponent<Rigidbody>().useGravity = true;
+    }
+
+    public void FinishQuiz5()
+    {
+        finish5 = true;
+        saveCheckpoint();
+        changeDoorStatus(true, "", 10);
+        changeDoorStatus(true, "", 11);
+        if (finish2)
+            UnlockKeyI();
+    }
+
+    public void UnlockKeyI()
+    {
+        crate.tag = "Dialog";
+        lever.tag = "Switch";
+        //object to go and find the crate
+    }
+
+    public void UnlockTheGreatDrawingRoom()
+    {
+        // :)
+    }
+
+    void changeDoorStatus(bool status, string name = "", int id = -1)
+    {
+        int index = id;
+        for (int i = 0; i < door_name.Count; ++i)
+            if (door_name[i] == name)
+                index = i;
+        if (index == -1)
+            return;
+        door[index] = status;
+    }
+
+    public bool checkDoorStatus(string name = "", int id = -1)
+    {
+        int index = id;
+        for (int i = 0; i < door_name.Count; ++i)
+            if (door_name[i] == name)
+                index = i;
+        if (index == -1)
+            return false;
+        return door[index];
     }
 
     public void setUIText(bool enable, string message = "Click to interact")
@@ -75,10 +367,27 @@ public class GameManager : MonoBehaviour
             UIText.enabled = false;
     }
 
-    //max distance is 5
-    public void enterView(string name, int distance = 3, string objname = "")
+    public void setUIHint(string hint)
     {
-        freeze = true;
+        StartCoroutine(ShowHint(hint));
+    }
+
+    public void setObjective(int id)
+    {
+        objectiveManager.addObjective(id);
+        StartCoroutine(ShowObjective(objectiveManager.getObjective(id)));
+    }
+
+    public void unsetObjective(int id)
+    {
+        objectiveManager.deleteObjective(id);
+    }
+
+    //max distance is 5
+    public void enterView(string name, float distance = 1.8f, string objname = "")
+    {
+        physics.radius = 0.1f;
+        freeze(true);
         Cursor.visible = true;
         cur_mode = (int)Mode.viewMode;
         Cursor.lockState = CursorLockMode.None;
@@ -90,7 +399,8 @@ public class GameManager : MonoBehaviour
     }
     public void exitView()
     {
-        freeze = false;
+        physics.radius = 1;
+        freeze(false);
         Cursor.visible = false;
         cur_mode = (int)Mode.freeMode;
         Cursor.lockState = CursorLockMode.Locked;
@@ -102,7 +412,7 @@ public class GameManager : MonoBehaviour
 
     public void enterStory(int storyNum)
     {
-        freeze = true;
+        freeze(true);
         cur_mode = (int)Mode.storyMode;
         storyPanel.enabled = true;
         storyLine.enabled = true;
@@ -112,7 +422,7 @@ public class GameManager : MonoBehaviour
     {
         storyPanel.enabled = false;
         storyLine.enabled = false;
-        freeze = false;
+        freeze(false);
         cur_mode = (int)Mode.freeMode;
     }
 
@@ -120,7 +430,7 @@ public class GameManager : MonoBehaviour
     {
         float offset_x = -72f, offset_z = -120;
         float offset_convert_x = -960, offset_convert_y = -540;
-        freeze = true;
+        freeze(true);
         cur_mode = (int)Mode.mapMode;
         cam.cullingMask = (int)RenderLayer.mapMode;
         float x = transform.position.x, z = transform.position.z;
@@ -134,7 +444,7 @@ public class GameManager : MonoBehaviour
 
     public void exitMap()
     {
-        freeze = false;
+        freeze(false);
         cur_mode = (int)Mode.freeMode;
         cam.cullingMask = (int)RenderLayer.freeMode;
     }
@@ -143,14 +453,14 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         cur_mode = (int)Mode.pauseMode;
-        freeze = true;
+        freeze(true);
         cam.cullingMask = (int)RenderLayer.pauseMode;
     }
     public void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
         cur_mode = (int)Mode.freeMode;
-        freeze = false;
+        freeze(false);
         cam.cullingMask = (int)RenderLayer.freeMode;
     }
 
@@ -182,9 +492,16 @@ public class GameManager : MonoBehaviour
 //#endif
     }
 
+    void freeze(bool yes)
+    {
+        movement.enabled = !yes;
+        mouseMovement.enabled = !yes;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(transform.rotation.w);
         //if (Input.GetKeyDown(KeyCode.Escape))
         if (Input.GetKeyDown(KeyCode.F1))
         {
@@ -225,16 +542,31 @@ public class GameManager : MonoBehaviour
         {
             lightsrc.enabled = !lightsrc.enabled;
         }
+    }
 
-        if (freeze)
-        {
-            movement.enabled = false;
-            mouseMovement.enabled = false;
-        }
-        else
-        {
-            movement.enabled = true;
-            mouseMovement.enabled = true;
-        }
+    IEnumerator LightningStrike()
+    {
+        yield return new WaitForSecondsRealtime(7);
+        //some camera animation
+        initRestart();
+        cameffect.FadeOut();
+        yield return new WaitForSecondsRealtime(2);
+        cameffect.FadeIn();
+    }
+
+    IEnumerator ShowHint(string hint)
+    {
+        UIhint.text = hint;
+        UIhint.enabled = true;
+        yield return new WaitForSeconds(2);
+        UIhint.enabled = false;
+    }
+
+    IEnumerator ShowObjective(string objective)
+    {
+        timedObjective.text = objective;
+        timedObjective.enabled = true;
+        yield return new WaitForSeconds(3);
+        timedObjective.enabled = false;
     }
 }

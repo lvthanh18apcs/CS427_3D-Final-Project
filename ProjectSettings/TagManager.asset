@@ -10,6 +10,7 @@ TagManager:
   - Color
   - Door
   - Switch
+  - Dialog
   layers:
   - Default
   - TransparentFX
