@@ -10,6 +10,9 @@ TagManager:
   - Color
   - Door
   - Switch
+  - Dialog
+  - Flow
+  - RRotate
   layers:
   - Default
   - TransparentFX

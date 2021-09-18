@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GlassH
+  m_Shader: {fileID: -6465566751694194690, guid: 6c15f9499dc8b8c448446c19d578ae05, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_0f9513d0c5914f9a8e54dfca8e41d6c6: 0.28
+    - Vector1_2f1ef7f634244d66b469c8944a0b7b39: 10
+    - Vector1_33f20349138a4acda0830f093c48af3d: 0.5
+    - Vector1_48eb33fd25de47ff871496f0c9d703f9: 0
+    - Vector1_69d551e095d94a1c8df6472370ad15a5: 1.91
+    - Vector1_7dc09984ec1b41fa832af6ff9d53e3a9: 50
+    - Vector1_b522d73f754f4b78a0f274b86f3524d8: 1
+    - Vector1_c1059e2282d94161a008a44c5c6756cc: 0
+    - Vector1_db5bd117ffaa4b74b570f8e9b9f1868c: 0.4
+    m_Colors:
+    - Color_4c2df7a6fe174ae1ab1979ee3f3ff783: {r: 0, g: 1, b: 0.65497446, a: 0}
+    - Color_5697b808172a4b9bb3aabb4514785988: {r: 181.01927, g: 139.08922, b: 2.5771258, a: 0}
+    - Color_9df8f5bad3a74598a492b216c2fd8909: {r: 0.3764706, g: 3.6392157, b: 23.968628, a: 0}
+    - Color_a08cdd4b54584e8183f8e9e2fb9a21a5: {r: 27.766775, g: 241.06587, b: 0, a: 0}
+  m_BuildTextureStacks: []

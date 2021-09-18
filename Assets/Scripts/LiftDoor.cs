@@ -18,8 +18,24 @@ public class LiftDoor : MonoBehaviour
         threshold = (int)(40 * (40 / (50 * distancePerUpdate)));
     }
 
+    public void upDoorInstant(GameObject door)
+    {
+        door.tag = "Untagged";
+        Vector3 pos = door.transform.position;
+        door.transform.position = new Vector3(pos.x, pos.y + 32, pos.z);
+    }
+
+    public void downDoorInstant(GameObject door)
+    {
+        door.tag = "Door";
+        Vector3 pos = door.transform.position;
+        door.transform.position = new Vector3(pos.x, pos.y - 32, pos.z);
+    }
+
     public void upDoor(GameObject door)
     {
+        //Debug.Log(door.transform.position);
+        door.tag = "Untagged";
         bool exists = false;
         for (int i = 0; i < doors.Count; ++i)
             if (door.transform.name == doors[i].transform.name && rates[i] < 0)
@@ -39,6 +55,7 @@ public class LiftDoor : MonoBehaviour
 
     public void downDoor(GameObject door)
     {
+        door.tag = "Door";
         bool exists = false;
         for (int i = 0; i < doors.Count; ++i)
             if (door.transform.name == doors[i].transform.name && rates[i] > 0)
@@ -56,12 +73,13 @@ public class LiftDoor : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         for(int i = 0; i < doors.Count; ++i)
         {
             if (count[i] > threshold)
             {
+                //Debug.Log(doors[i].transform.position);
                 doors.RemoveAt(i);
                 count.RemoveAt(i);
                 rates.RemoveAt(i);
@@ -75,11 +93,5 @@ public class LiftDoor : MonoBehaviour
                 count[i]++;
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
