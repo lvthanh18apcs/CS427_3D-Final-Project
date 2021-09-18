@@ -6,9 +6,9 @@ using UnityEngine;
 public class Checkpoints
 {
     public bool finish0 = false, finish1 = false, finish2 = false, finish4 = false, finish5 = false, keyI = false, keyII = false, keyDin = false, mapNflash = false;
-    public Vector3 lastpos;
+    public float posx,posy,posz, rotx,roty,rotz;
 
-    public Checkpoints(bool f0, bool f1, bool f2, bool f4, bool f5, bool keyI, bool keyII, bool keyDin, bool mapNflash, Vector3 pos)
+    public Checkpoints(bool f0, bool f1, bool f2, bool f4, bool f5, bool keyI, bool keyII, bool keyDin, bool mapNflash, Vector3 pos, Vector3 rot)
     {
         finish0 = f0;
         finish1 = f1;
@@ -19,6 +19,7 @@ public class Checkpoints
         this.keyII = keyII;
         this.keyDin = keyDin;
         this.mapNflash = mapNflash;
-        lastpos = pos;
+        posx = pos.x; posy = pos.y;posz = pos.z;
+        rotx = rot.x;roty = rot.y;rotz = rot.z;
     }
 }

@@ -11,7 +11,7 @@ public class CameraEffect : MonoBehaviour
     [SerializeField] Volume volume;
     DepthOfField depth;
     Color color;
-    bool fadein = false, fadeout = false;
+    bool fadein = false, fadeout = false, simplefadeout = false, simplefadein = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +26,16 @@ public class CameraEffect : MonoBehaviour
     public void FadeIn()
     {
         fadein = true;
+    }
+
+    public void SimpleFadeOut()
+    {
+        simplefadeout = true;
+    }
+
+    public void SimpleFadeIn()
+    {
+        simplefadein = true;
     }
 
     // Update is called once per frame
@@ -57,6 +67,22 @@ public class CameraEffect : MonoBehaviour
                 depth.focalLength.value -= 0.1f;
             if (depth.focalLength.value == 1)
                 fadein = false;
+        }
+        else if (simplefadeout)
+        {
+            filter.color = Color.white;
+            simplefadeout = false;
+        }
+        else if (simplefadein)
+        {
+            color = filter.color;
+            if (color.a > 0)
+            {
+                color.a -= 0.1f;
+                filter.color = color;
+            }
+            else
+                simplefadein = false;
         }
     }
 }

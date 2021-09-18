@@ -58,7 +58,7 @@ public static class SaveManager
         else
         {
             Debug.Log("Save file not found at " + path + "\nLoading new game..");
-            return new Checkpoints(false, false, false, false, false, false, false, false,false, new Vector3(44, 28, -12));
+            return new Checkpoints(false, false, false, false, false, false, false, false,false, new Vector3(44, 28, -12), new Vector3(0,0,0));
         }
     }
 }
